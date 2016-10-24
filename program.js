@@ -1,8 +1,15 @@
-var l = process.argv.length;
-var sum = 0;
+// Write a program that uses a single synchronous filesystem operation to  
+// read a file and print the number of newlines (\n) it contains to the  
+// console (stdout), similar to running cat file | wc -l.  
+ 
+// The full path to the file to read will be provided as the first  
+// command-line argument (i.e., process.argv[2]). You do not need to make  
+// your own test file.  
 
-for(i = 2; i < l; i++){
-	sum += Number(process.argv[i]);
-}
+var fs = require('fs');
 
-console.log(sum);
+var readFile = fs.readFileSync(process.argv[2]).toString();
+
+var numLines = readFile.split('\n').length - 1;
+
+console.log(numLines);
