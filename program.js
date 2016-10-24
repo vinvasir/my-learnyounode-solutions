@@ -1,15 +1,19 @@
-// Write a program that uses a single synchronous filesystem operation to  
-// read a file and print the number of newlines (\n) it contains to the  
-// console (stdout), similar to running cat file | wc -l.  
+// Write a program that uses a single asynchronous filesystem operation to  
+// read a file and print the number of newlines it contains to the console  
+// (stdout), similar to running cat file | wc -l.  
  
 // The full path to the file to read will be provided as the first  
-// command-line argument (i.e., process.argv[2]). You do not need to make  
-// your own test file.  
+// command-line argument.  
+
 
 var fs = require('fs');
 
-var readFile = fs.readFileSync(process.argv[2]).toString();
-
-var numLines = readFile.split('\n').length - 1;
-
-console.log(numLines);
+fs.readFile(process.argv[2], function(err, data){
+	if(err){
+		console.log("Sorry, an error occurred");
+	}
+	else {
+		var numLines = data.toString().split('\n').length - 1;
+		console.log(numLines);
+	}
+});
