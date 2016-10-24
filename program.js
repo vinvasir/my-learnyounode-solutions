@@ -1,13 +1,8 @@
-// console.log(process.argv.length);
-
 var l = process.argv.length;
-
-// console.log(l);
+var sum = 0;
 
 for(i = 2; i < l; i++){
-	console.log(Number(process.argv[i]) + "\n");
+	sum += Number(process.argv[i]);
 }
 
-// console.log(process.argv[2]);
-// console.log(process.argv[3]);
-// console.log(process.argv[4]);
+console.log(sum);
